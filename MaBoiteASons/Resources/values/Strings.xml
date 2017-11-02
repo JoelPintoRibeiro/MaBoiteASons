@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">MaBoiteASons</string>
+  <string name="toolbar_text">Ma Boite À Sons</string>
+  <string name="add_audio">Ajouter un son</string>
 </resources>
