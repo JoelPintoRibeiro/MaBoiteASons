@@ -115,56 +115,65 @@ namespace MaBoiteASons
 			// aapt resource value: 0x7f070003
 			public const int addRecord = 2131165187;
 			
-			// aapt resource value: 0x7f07000b
-			public const int audioCommandsLayout = 2131165195;
-			
-			// aapt resource value: 0x7f07000f
-			public const int cancelRecord = 2131165199;
-			
-			// aapt resource value: 0x7f070009
-			public const int chronoLayout = 2131165193;
-			
-			// aapt resource value: 0x7f07000a
-			public const int chronometerSong = 2131165194;
-			
-			// aapt resource value: 0x7f070004
-			public const int gridviewSong = 2131165188;
-			
-			// aapt resource value: 0x7f070005
-			public const int labelLayout = 2131165189;
-			
-			// aapt resource value: 0x7f070000
-			public const int linearLayout1 = 2131165184;
-			
 			// aapt resource value: 0x7f070002
-			public const int linearLayout2 = 2131165186;
-			
-			// aapt resource value: 0x7f070010
-			public const int playRecord = 2131165200;
-			
-			// aapt resource value: 0x7f070008
-			public const int recordButton = 2131165192;
-			
-			// aapt resource value: 0x7f070007
-			public const int recordButtonLayout = 2131165191;
-			
-			// aapt resource value: 0x7f07000e
-			public const int recordOver = 2131165198;
-			
-			// aapt resource value: 0x7f070011
-			public const int saveRecord = 2131165201;
+			public const int addSongLayout = 2131165186;
 			
 			// aapt resource value: 0x7f07000d
-			public const int stopRecord = 2131165197;
+			public const int audioCommandsLayout = 2131165197;
+			
+			// aapt resource value: 0x7f070011
+			public const int cancelRecord = 2131165201;
+			
+			// aapt resource value: 0x7f07000b
+			public const int chronoLayout = 2131165195;
 			
 			// aapt resource value: 0x7f07000c
-			public const int textView3 = 2131165196;
+			public const int chronometerSong = 2131165196;
+			
+			// aapt resource value: 0x7f070005
+			public const int gridviewSong = 2131165189;
+			
+			// aapt resource value: 0x7f070007
+			public const int labelLayout = 2131165191;
+			
+			// aapt resource value: 0x7f070004
+			public const int linearLayout1 = 2131165188;
+			
+			// aapt resource value: 0x7f070006
+			public const int linearLayout2 = 2131165190;
+			
+			// aapt resource value: 0x7f070000
+			public const int noSongsLayout = 2131165184;
+			
+			// aapt resource value: 0x7f070012
+			public const int playRecord = 2131165202;
+			
+			// aapt resource value: 0x7f07000a
+			public const int recordButton = 2131165194;
+			
+			// aapt resource value: 0x7f070009
+			public const int recordButtonLayout = 2131165193;
+			
+			// aapt resource value: 0x7f070010
+			public const int recordOver = 2131165200;
+			
+			// aapt resource value: 0x7f070014
+			public const int saveRecord = 2131165204;
+			
+			// aapt resource value: 0x7f07000f
+			public const int stopRecord = 2131165199;
+			
+			// aapt resource value: 0x7f07000e
+			public const int textView3 = 2131165198;
 			
 			// aapt resource value: 0x7f070001
 			public const int title = 2131165185;
 			
-			// aapt resource value: 0x7f070006
-			public const int txtRecordSong = 2131165190;
+			// aapt resource value: 0x7f070008
+			public const int txtRecordSong = 2131165192;
+			
+			// aapt resource value: 0x7f070013
+			public const int yolo = 2131165203;
 			
 			static Id()
 			{
