@@ -3,6 +3,7 @@ using Android.Widget;
 using Android.OS;
 using System;
 using Android.Content;
+using Android.Views;
 
 namespace MaBoiteASons
 {
@@ -16,8 +17,10 @@ namespace MaBoiteASons
         private ImageButton _saveButton;
         private ImageButton _stopRecord;
         private Chronometer _chrono;
+        private View _recordOverR;
         private LinearLayout _audioCommandsLayout;
         private LinearLayout _recordOverLayout;
+        private LinearLayout _recordButtonsLayout;
         private AudioManager _audioManager = new AudioManager();
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -32,12 +35,11 @@ namespace MaBoiteASons
     
             FindViews();
             MakeHandlers();
-
         }
 
         private void MakeHandlers()
         {
-            _cancelButton.Click += (sender ,e) =>
+            _cancelButton.Click += (sender, e) =>
             {
                 var intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
@@ -46,6 +48,7 @@ namespace MaBoiteASons
             {
                 _chrono.Start();
                 _audioManager.RecordAudio("audio.3gp");
+                _recordButtonsLayout.WeightSum = 2;
                 _audioCommandsLayout.Visibility = Android.Views.ViewStates.Visible;
             };
             _stopRecord.Click += (sender, e) =>
@@ -70,8 +73,11 @@ namespace MaBoiteASons
             _saveButton = FindViewById<ImageButton>(Resource.Id.saveRecord);
             _audioCommandsLayout = FindViewById<LinearLayout>(Resource.Id.audioCommandsLayout);
             _recordOverLayout = FindViewById<LinearLayout>(Resource.Id.recordOver);
+            _recordButtonsLayout = FindViewById<LinearLayout>(Resource.Id.recordButtonLayout);
             _stopRecord = FindViewById<ImageButton>(Resource.Id.stopRecord);
             _chrono = FindViewById<Chronometer>(Resource.Id.chronometerSong);
+
+            _recordOverR = FindViewById(Resource.Id.recordOverR);
         }
     }
 }

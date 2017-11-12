@@ -4,113 +4,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="5">
-    <LinearLayout
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:id="@+id/labelLayout"
+      android:layout_weight="0.5">
+    <TextView
+        android:text="Ajouter un son à ma boite"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/labelLayout"
-        android:layout_weight="0.5">
-        <TextView
-            android:text="Record a new Song"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/txtRecordSong"
-            android:layout_gravity="center_horizontal" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/txtRecordSong"
+        android:layout_gravity="center_horizontal" />
+  </LinearLayout>
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:id="@+id/recordButtonLayout"
+      android:layout_weight="2">
+    <TextView
+        android:text="Cliquez pour demarrer l'enregistrement"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/recordButtonLayout"
-        android:layout_weight="1">
-        <ImageButton
-            android:src="@drawable/record"
-            android:layout_width="match_parent"
-            android:id="@+id/recordButton"
-            android:cropToPadding="false"
-            android:scaleType="fitCenter"
-            android:background="@color/theme_custom_background"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblClickToRecord"
+        android:gravity="center" />
+    <ImageButton
+        android:src="@drawable/record"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:id="@+id/recordButton"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        android:background="@color/theme_custom_background"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp" />
+  </LinearLayout>
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_gravity="center"
+      android:id="@+id/chronoLayout"
+      android:layout_weight="1">
+    <Chronometer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/chronometerSong" />
+  </LinearLayout>
+  <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:id="@+id/audioCommandsLayout"
+      android:visibility="gone"
+      android:layout_weight="2">
+    <TextView
+        android:text="Stop Record by clicking here"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/textView3" />
+    <ImageButton
+        android:src="@drawable/stop_record"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/stopRecord"
         android:layout_gravity="center"
-        android:id="@+id/chronoLayout"
-        android:layout_weight="1">
-        <Chronometer
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/chronometerSong" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
+        android:background="@color/theme_custom_background"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="10dp" />
+  </LinearLayout>
+  <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:weightSum="3"
+      android:layout_weight="3.5"
+      android:id="@+id/recordOver"
+      android:visibility="gone">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/audioCommandsLayout"
-        android:visibility="gone"
-        android:layout_weight="1">
-        <TextView
-            android:text="Stop Record by clicking here"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/textView3" />
-        <ImageButton
-            android:src="@drawable/stop_record"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/stopRecord"
-            android:layout_gravity="center"
-            android:background="@color/theme_custom_background"
-            android:scaleType="fitCenter"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:weightSum="3"
-        android:layout_weight="3.5"
-        android:id="@+id/recordOver">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageButton
-                android:src="@drawable/cancel_record"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/cancelRecord"
-                android:background="@color/theme_custom_background"
-                android:scaleType="fitXY"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="50dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp" />
-            <ImageButton
-                android:src="@drawable/play"
-                android:layout_width="80dp"
-                android:layout_height="110dp"
-                android:id="@+id/playRecord"
-                android:background="@color/theme_custom_background"
-                android:scaleType="fitXY"
-                android:layout_alignParentStart="@+id/yolo"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
-            <ImageButton
-                android:src="@drawable/save"
-                android:layout_width="50dp"
-                android:id="@+id/saveRecord"
-                android:background="@color/theme_custom_background"
-                android:scaleType="fitXY"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="20dp" />
-        </RelativeLayout>
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:id="@+id/recordOverR">
+      <ImageButton
+          android:src="@drawable/cancel_record"
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:id="@+id/cancelRecord"
+          android:background="@color/theme_custom_background"
+          android:scaleType="fitXY"
+          android:layout_marginLeft="10dp"
+          android:layout_marginTop="50dp"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="20dp" />
+      <ImageButton
+          android:src="@drawable/play"
+          android:layout_width="80dp"
+          android:layout_height="110dp"
+          android:id="@+id/playRecord"
+          android:background="@color/theme_custom_background"
+          android:scaleType="fitXY"
+          android:layout_alignParentStart="@+id/yolo"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="20dp" />
+      <ImageButton
+          android:src="@drawable/save"
+          android:layout_width="50dp"
+          android:id="@+id/saveRecord"
+          android:background="@color/theme_custom_background"
+          android:scaleType="fitXY"
+          android:layout_height="50dp"
+          android:layout_alignParentLeft="true"
+          android:layout_marginTop="50dp"
+          android:layout_marginLeft="20dp" />
+    </RelativeLayout>
+  </LinearLayout>
 </LinearLayout>
