@@ -11,6 +11,8 @@ using Android.Views;
 using Android.Widget;
 using MaBoiteASons.Models;
 using Android.Media;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace MaBoiteASons
 {
@@ -20,17 +22,25 @@ namespace MaBoiteASons
         private MediaRecorder _recorder { get; set; }
         private MediaPlayer _player { get; set; }
 
-       
+        private string _songFolder { get; set; }
 
         public AudioManager()
         {
             _recorder = new MediaRecorder(); // Initial state.
             _player = new MediaPlayer();
+            _songFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/records/";
+            using (StreamReader reader = new StreamReader(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "recordsAudio.json"))
+            {
+                string response;
+                response = reader.ReadToEnd();
+                List<AudioFile> responseData = JsonConvert.DeserializeObject<List<AudioFile>>(response);
+                _listAudio = responseData;
+            }
         }
 
         public void PlayAudio(string filename)
         {
-            var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/" + filename;
+            var path = _songFolder + filename;
 
             _player.Reset();
             _player.SetDataSource(path);
@@ -43,7 +53,7 @@ namespace MaBoiteASons
             try
             {
 
-                var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/" + filename;
+                var path = _songFolder + "temp/" + filename;
 
                 if (System.IO.File.Exists(path))
                     System.IO.File.Delete(path);
@@ -88,6 +98,22 @@ namespace MaBoiteASons
 
         public void AddAudio(AudioFile audioFile)
         {
+            string json;
+
+            File.Move(_songFolder + "temp/" + audioFile.FileName(), _songFolder + audioFile.FileName());
+            using (StreamReader reader = new StreamReader(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "recordsAudio.json"))
+            {
+                string response;
+                response = reader.ReadToEnd();
+                List<AudioFile> responseData = JsonConvert.DeserializeObject<List<AudioFile>>(response);
+                responseData.Add(audioFile);
+                json = JsonConvert.SerializeObject(responseData);
+            }
+
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            //write string to file
+            System.IO.File.WriteAllText(path + "recordsAudio.json", json);
+
             _listAudio.Add(audioFile);
         }
 

@@ -3,6 +3,9 @@ using Android.Widget;
 using Android.OS;
 using Android.Content;
 using System;
+using System.IO;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MaBoiteASons
 {
@@ -12,25 +15,71 @@ namespace MaBoiteASons
 
         private GridView _songsGridView;
         private Button _addSong;
+
+        private bool resetFiles = false;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
 
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            if (!Directory.Exists(path + "/records"))
+            {
+                Directory.CreateDirectory(path + "/records");
+            }
+            if (!Directory.Exists(path + "/records/temp"))
+            {
+                Directory.CreateDirectory(path + "/records/temp");
+            }
+            if (resetFiles)
+            {
+                File.Delete(path + "appData.json");
+                File.Delete(path + "recordsAudio.json");
+            }
+
+            if (!File.Exists(path + "appData.json"))
+            {
+                string json = JsonConvert.SerializeObject(new dataJson { currentCount = 1});
+
+                //write string to file
+                System.IO.File.WriteAllText(path + "appData.json", json);
+            
+            }
+
+            if (!File.Exists(path + "recordsAudio.json"))
+            {
+                string jsons= JsonConvert.SerializeObject(new List<AudioManager>());
+
+                //write string to file
+                System.IO.File.WriteAllText(path + "recordsAudio.json", jsons);
+
+            }
+
+
             var audioManager = new AudioManager();
-            audioManager.AddAudio(new Models.AudioFile { FileName = "test", Name = "name" });
+
             if (audioManager.GetAllAudios().Count == 0)
             {
                 SetContentView(Resource.Layout.Main);
+           
             }
             else
             {
                 SetContentView(Resource.Layout.MainSongs);
+                _songsGridView = FindViewById<GridView>(Resource.Id.gridviewSong);
+                _songsGridView.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs args) {
+                    TextView st = (TextView)args.View;
+                    var t=st.Text;
+                    audioManager.PlayAudio(t + ".3gp");
+                };
+
+                _songsGridView.Adapter = new ImageAdapter(this,this);
+
             }
 
             FindViews();
 
-            _songsGridView.Adapter = new ImageAdapter(this);
+
 
             MakeHandlers();
 
@@ -41,9 +90,7 @@ namespace MaBoiteASons
         private void MakeHandlers()
         {
 
-            _songsGridView.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs args) {
-                Toast.MakeText(this, args.Position.ToString(), ToastLength.Short).Show();
-            };
+ 
             _addSong.Click += (sender, e) =>
             {
                 var intent = new Intent(this, typeof(RecordSongActivity));
@@ -52,7 +99,6 @@ namespace MaBoiteASons
         }
         private void FindViews()
         {
-            _songsGridView = FindViewById<GridView>(Resource.Id.gridviewSong);
             _addSong = FindViewById<Button>(Resource.Id.addRecord);
         }
     }

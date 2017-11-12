@@ -112,6 +112,9 @@ namespace MaBoiteASons
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f070017
+			public const int ContactName = 2131165207;
+			
 			// aapt resource value: 0x7f070003
 			public const int addRecord = 2131165187;
 			
@@ -202,6 +205,9 @@ namespace MaBoiteASons
 			
 			// aapt resource value: 0x7f030002
 			public const int RecordSong = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int SongLayout = 2130903043;
 			
 			static Layout()
 			{
