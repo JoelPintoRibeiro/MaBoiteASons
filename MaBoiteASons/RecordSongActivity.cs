@@ -66,6 +66,7 @@ namespace MaBoiteASons
             };
             _recordSongButton.Click += (sender, e) =>
             {
+                _chrono.Base = SystemClock.ElapsedRealtime();
                 _chrono.Start();
                 _audioManager.RecordAudio(counter.ToString()+".3gp");
                 _recordButtonsLayout.WeightSum = 2;
