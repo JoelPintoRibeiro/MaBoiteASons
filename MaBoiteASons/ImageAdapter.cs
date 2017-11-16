@@ -65,22 +65,20 @@ namespace MaBoiteASons
         // create a new ImageView for each item referenced by the Adapter
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            TextView view = new TextView(context);
-
+            View view = LayoutInflater.From(_activity).Inflate(Resource.Layout.SongLayout, parent, false);
+     
             const string space = " ";
             string description = this[position].Name.PadRight(25, Convert.ToChar(space)).Substring(0, 25);
-   
+             var t = view.FindViewById<TextView>(Resource.Id.ContactName);
             //alternate the row colours and set the text foreground / background colours
             var bgColor = position % 2 == 0
                               ? Android.Graphics.Color.White
                               : Android.Graphics.Color.LightGray;
 
             view.SetBackgroundColor(bgColor);
-            view.SetTextColor(Android.Graphics.Color.Black);
-            view.SetTypeface(Typeface.Monospace, TypefaceStyle.Bold);
-            view.SetHeight(50);
 
-            view.Text = this[position].Id.ToString();
+
+            t.Text = this[position].Id.ToString();
 
             return view;
         }

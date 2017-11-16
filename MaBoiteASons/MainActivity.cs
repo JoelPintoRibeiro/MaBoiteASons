@@ -68,9 +68,10 @@ namespace MaBoiteASons
                 SetContentView(Resource.Layout.MainSongs);
                 _songsGridView = FindViewById<GridView>(Resource.Id.gridviewSong);
                 _songsGridView.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs args) {
-                    TextView st = (TextView)args.View;
-                    var t=st.Text;
-                    audioManager.PlayAudio(t + ".3gp");
+               
+                    var t = args.View.FindViewById<TextView>(Resource.Id.ContactName);
+  
+                    audioManager.PlayAudio(t.Text + ".3gp");
                 };
 
                 _songsGridView.Adapter = new ImageAdapter(this,this);
