@@ -112,8 +112,8 @@ namespace MaBoiteASons
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070017
-			public const int ContactName = 2131165207;
+			// aapt resource value: 0x7f070018
+			public const int ContactName = 2131165208;
 			
 			// aapt resource value: 0x7f070003
 			public const int addRecord = 2131165187;
@@ -125,7 +125,10 @@ namespace MaBoiteASons
 			public const int audioCommandsLayout = 2131165198;
 			
 			// aapt resource value: 0x7f070013
-			public const int cancelRecord = 2131165203;
+			public const int audioName = 2131165203;
+			
+			// aapt resource value: 0x7f070014
+			public const int cancelRecord = 2131165204;
 			
 			// aapt resource value: 0x7f07000c
 			public const int chronoLayout = 2131165196;
@@ -151,8 +154,8 @@ namespace MaBoiteASons
 			// aapt resource value: 0x7f070000
 			public const int noSongsLayout = 2131165184;
 			
-			// aapt resource value: 0x7f070014
-			public const int playRecord = 2131165204;
+			// aapt resource value: 0x7f070015
+			public const int playRecord = 2131165205;
 			
 			// aapt resource value: 0x7f07000b
 			public const int recordButton = 2131165195;
@@ -166,8 +169,8 @@ namespace MaBoiteASons
 			// aapt resource value: 0x7f070012
 			public const int recordOverR = 2131165202;
 			
-			// aapt resource value: 0x7f070016
-			public const int saveRecord = 2131165206;
+			// aapt resource value: 0x7f070017
+			public const int saveRecord = 2131165207;
 			
 			// aapt resource value: 0x7f070010
 			public const int stopRecord = 2131165200;
@@ -181,8 +184,8 @@ namespace MaBoiteASons
 			// aapt resource value: 0x7f070008
 			public const int txtRecordSong = 2131165192;
 			
-			// aapt resource value: 0x7f070015
-			public const int yolo = 2131165205;
+			// aapt resource value: 0x7f070016
+			public const int yolo = 2131165206;
 			
 			static Id()
 			{
