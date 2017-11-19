@@ -61,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="recordsAudio.json" />
-    <Compile Include="AsyncHelper.cs" />
     <Compile Include="AudioManager.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="ImageAdapter.cs" />
