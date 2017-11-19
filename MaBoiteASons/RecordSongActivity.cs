@@ -30,6 +30,7 @@ namespace MaBoiteASons
         private LinearLayout _recordOverLayout;
         private LinearLayout _recordButtonsLayout;
         private AudioManager _audioManager = new AudioManager();
+        private TextView _audioName;
         private int counter;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -87,7 +88,7 @@ namespace MaBoiteASons
             _saveButton.Click += (sender, e) =>
             {
 
-                _audioManager.AddAudio(new Models.AudioFile { Id = this.counter, Name = "osef" });
+                _audioManager.AddAudio(new Models.AudioFile { Id = this.counter, Name = _audioName.Text });
                 int newCount = counter + 1 ;
                 string json = JsonConvert.SerializeObject(new dataJson { currentCount = newCount });
                 string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
@@ -110,7 +111,7 @@ namespace MaBoiteASons
             _recordButtonsLayout = FindViewById<LinearLayout>(Resource.Id.recordButtonLayout);
             _stopRecord = FindViewById<ImageButton>(Resource.Id.stopRecord);
             _chrono = FindViewById<Chronometer>(Resource.Id.chronometerSong);
-
+            _audioName = FindViewById<TextView>(Resource.Id.audioName);
             _recordOverR = FindViewById(Resource.Id.recordOverR);
         }
     }
