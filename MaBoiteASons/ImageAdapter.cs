@@ -12,6 +12,7 @@ using Android.Widget;
 using MaBoiteASons.Models;
 using System.Drawing;
 using Android.Graphics;
+using System.Threading.Tasks;
 
 namespace MaBoiteASons
 {
@@ -33,6 +34,28 @@ namespace MaBoiteASons
         Resource.Drawable.sample_4, Resource.Drawable.sample_5,
         Resource.Drawable.sample_6, Resource.Drawable.sample_7
     };
+
+        private Task<string> DisplayCustomDialog(string dialogTitle, string dialogMessage, string dialogPositiveBtnLabel, string dialogNegativeBtnLabel)
+        {
+            var tcs = new TaskCompletionSource<string>();
+
+            Android.App.AlertDialog.Builder alert = new Android.App.AlertDialog.Builder(context);
+            alert.SetTitle(dialogTitle);
+            alert.SetMessage(dialogMessage);
+            alert.SetPositiveButton(dialogPositiveBtnLabel, (senderAlert, args) => {
+                tcs.SetResult(dialogPositiveBtnLabel);
+            });
+
+            alert.SetNegativeButton(dialogNegativeBtnLabel, (senderAlert, args) => {
+                tcs.SetResult(dialogNegativeBtnLabel);
+            });
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
+
+            return tcs.Task;
+        }
+
         public ImageAdapter(Context c,Activity activity)
         {
             var audio = new AudioManager();
@@ -76,10 +99,45 @@ namespace MaBoiteASons
                               ? Android.Graphics.Color.White
                               : Android.Graphics.Color.LightGray;
             Button but = view.FindViewById<Button>(Resource.Id.button1);
-            but.Click +=  delegate  {
-                var trr= this[position].Id.ToString();
-                new AudioManager().RemoveAudio(this[position]);
-            } ;
+            but.Click += delegate
+            {
+
+                new AlertDialog.Builder(context)
+                    .SetPositiveButton("Oui", (sender, args) =>
+                    {
+                        var audioToRemove = this[position];
+                        new AudioManager().RemoveAudio(audioToRemove);
+                        _list.Remove(audioToRemove);
+                        if (_list.Count == 0)
+                        {
+                            var intent = new Intent(_activity, typeof(MainActivity));
+                            _activity.StartActivity(intent);
+                            _activity.Finish();
+                        }
+                        else
+                        {
+                            NotifyDataSetChanged();
+                        }
+                    })
+                    .SetNegativeButton("Non", (sender, args) =>
+                    {
+                        // User pressed no 
+                    })
+                    .SetMessage("Etes vous sur de vouloir supprimer ce son?")
+                    .SetTitle("Suppression")
+                    .Show();
+
+                //string dialogResponse = AsyncHelpers.RunSync<string>(() => DisplayCustomDialog("Confirm delete", "Are you sure you want to delete all rows?", "YES", "NO"));
+                //if (dialogResponse == "OK") // if it's equal to Ok
+                //{
+                    
+                //}
+                //else // if it's equal to Cancel
+                //{
+                //    return; // just return to the page and do nothing.
+                //}
+
+            };
             Button but1 = view.FindViewById<Button>(Resource.Id.PlayGrid);
             but1.Click += delegate {
                 new AudioManager().PlayAudio(this[position].FileName());

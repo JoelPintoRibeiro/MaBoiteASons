@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace MaBoiteASons
 {
-    [Activity(Label = "@string/toolbar_text", MainLauncher = true)]
+    [Activity(Label = "@string/toolbar_text", MainLauncher = true, NoHistory = true)]
     public class MainActivity : Activity
     {
 

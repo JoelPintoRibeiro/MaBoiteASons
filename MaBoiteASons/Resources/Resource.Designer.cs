@@ -112,14 +112,14 @@ namespace MaBoiteASons
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070019
-			public const int AudioNameSong = 2131165209;
-			
-			// aapt resource value: 0x7f070018
-			public const int ContactName = 2131165208;
+			// aapt resource value: 0x7f07001b
+			public const int AudioNameSong = 2131165211;
 			
 			// aapt resource value: 0x7f07001a
-			public const int PlayGrid = 2131165210;
+			public const int ContactName = 2131165210;
+			
+			// aapt resource value: 0x7f07001c
+			public const int PlayGrid = 2131165212;
 			
 			// aapt resource value: 0x7f070003
 			public const int addRecord = 2131165187;
@@ -133,11 +133,17 @@ namespace MaBoiteASons
 			// aapt resource value: 0x7f070013
 			public const int audioName = 2131165203;
 			
-			// aapt resource value: 0x7f07001b
-			public const int button1 = 2131165211;
+			// aapt resource value: 0x7f07001d
+			public const int button1 = 2131165213;
+			
+			// aapt resource value: 0x7f070018
+			public const int cancelLayout = 2131165208;
 			
 			// aapt resource value: 0x7f070014
 			public const int cancelRecord = 2131165204;
+			
+			// aapt resource value: 0x7f070019
+			public const int cancelRecordButton = 2131165209;
 			
 			// aapt resource value: 0x7f07000c
 			public const int chronoLayout = 2131165196;

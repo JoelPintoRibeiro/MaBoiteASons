@@ -96,7 +96,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/audioName"
-                android:hint="Audio name" />
+                android:hint="Audio name"
+                android:inputType="text"
+                android:maxLength="50" />
             <ImageButton
                 android:src="@drawable/cancel_record"
                 android:layout_width="50dp"
@@ -129,5 +131,25 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="20dp" />
         </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/cancelLayout"
+        android:layout_weight="2"
+        android:visibility="visible"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:visibility="gone">
+        <ImageButton
+            android:src="@drawable/cancel_record"
+            android:id="@+id/cancelRecordButton"
+            android:background="@color/theme_custom_background"
+            android:scaleType="center"
+            android:layout_width="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </LinearLayout>
