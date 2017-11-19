@@ -38,9 +38,20 @@ namespace MaBoiteASons
             }
         }
 
-        public void PlayAudio(string filename)
+        public void PlayAudio(string filename,bool fromTemp = false)
         {
-            var path = _songFolder + filename;
+
+            string path;
+
+            if (fromTemp)
+            {
+                path = _songFolder + "temp/" + filename;
+            }
+            else
+            {
+                path = _songFolder + filename;
+            }
+
 
             _player.Reset();
             _player.SetDataSource(path);

@@ -82,7 +82,7 @@ namespace MaBoiteASons
             };
             _playSongButton.Click += (sender, e) =>
             {
-                _audioManager.PlayAudio(counter.ToString() + ".3gp");
+                _audioManager.PlayAudio(counter.ToString() + ".3gp",true);
             };
             _saveButton.Click += (sender, e) =>
             {
