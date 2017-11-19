@@ -130,7 +130,24 @@ namespace MaBoiteASons
 
         public void RemoveAudio(AudioFile audioFile)
         {
-            _listAudio.Add(audioFile);
+            string json;
+
+            File.Delete(_songFolder + audioFile.FileName());
+            using (StreamReader reader = new StreamReader(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "recordsAudio.json"))
+            {
+                string response;
+                response = reader.ReadToEnd();
+                List<AudioFile> responseData = JsonConvert.DeserializeObject<List<AudioFile>>(response);
+                var item = responseData.Where(s=>s.Id==audioFile.Id).FirstOrDefault();
+                responseData.Remove(item);
+                json = JsonConvert.SerializeObject(responseData);
+            }
+
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            //write string to file
+            System.IO.File.WriteAllText(path + "recordsAudio.json", json);
+
+            _listAudio.Remove(audioFile);
         }
 
         public List<AudioFile> GetAllAudios()

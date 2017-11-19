@@ -1,11 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="50dp"
-        android:layout_height="50dp">
-    <TextView
-        android:id="@+id/ContactName"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginLeft="5dp" />
+    android:layout_width="100dp"
+    android:layout_height="150dp"
+    android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ContactName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginLeft="5dp"
+            android:text="t" />
+        <TextView
+            android:id="@+id/AudioNameSong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginLeft="5dp"
+            android:text="ttt" />
+  <Button
+           android:text="Play"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/PlayGrid" />
+        <Button
+            android:text="Delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button1" />
+
 </LinearLayout>

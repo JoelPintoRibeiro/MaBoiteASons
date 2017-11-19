@@ -70,13 +70,23 @@ namespace MaBoiteASons
             const string space = " ";
             string description = this[position].Name.PadRight(25, Convert.ToChar(space)).Substring(0, 25);
              var t = view.FindViewById<TextView>(Resource.Id.ContactName);
+            var t1 = view.FindViewById<TextView>(Resource.Id.AudioNameSong);
             //alternate the row colours and set the text foreground / background colours
             var bgColor = position % 2 == 0
                               ? Android.Graphics.Color.White
                               : Android.Graphics.Color.LightGray;
+            Button but = view.FindViewById<Button>(Resource.Id.button1);
+            but.Click +=  delegate  {
+                var trr= this[position].Id.ToString();
+                new AudioManager().RemoveAudio(this[position]);
+            } ;
+            Button but1 = view.FindViewById<Button>(Resource.Id.PlayGrid);
+            but1.Click += delegate {
+                new AudioManager().PlayAudio(this[position].FileName());
 
+            };
             view.SetBackgroundColor(bgColor);
-
+            t1.Text = _list[position].Name;
 
             t.Text = this[position].Id.ToString();
 
